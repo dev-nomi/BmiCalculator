@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ReusableCard.dart';
 import 'ReusableIcon.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 const cardColor = Color(0xFF1d1f33);
 const bottomCardColor = Color(0xFFeb1555);
-
 const bottomContainerHeight = 80.0;
 
 class InputPage extends StatefulWidget {
