@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const cardColor = Color(0xFF1d1f33);
 const bottomCardColor = Color(0xFFeb1555);
+
 const bottomContainerHeight = 80.0;
 
 class InputPage extends StatefulWidget {
@@ -28,48 +29,18 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: ReusableCard(
                       colour: cardColor,
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.mars,
-                            size: 80.0,
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            'MALE',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: Color(0xFF9a9ba4),
-                            ),
-                          ),
-                        ],
+                      cardChild: ReusableIcon(
+                        icon: FontAwesomeIcons.mars,
+                        iconName: 'MALE',
                       ),
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
                       colour: cardColor,
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.venus,
-                            size: 80.0,
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            'FEMALE',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: Color(0xFF9a9ba4),
-                            ),
-                          ),
-                        ],
+                      cardChild: ReusableIcon(
+                        icon: FontAwesomeIcons.venus,
+                        iconName: 'Female',
                       ),
                     ),
                   ),
@@ -106,6 +77,36 @@ class _InputPageState extends State<InputPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ReusableIcon extends StatelessWidget {
+  final IconData icon;
+  final String iconName;
+
+  ReusableIcon({this.iconName, this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          icon,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Text(
+          iconName,
+          style: TextStyle(
+            fontSize: 15.0,
+            color: Color(0xFF9a9ba4),
+          ),
+        ),
+      ],
     );
   }
 }
