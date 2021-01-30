@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ReusableCard.dart';
 import 'ReusableIcon.dart';
@@ -11,7 +12,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
-  int height=180;
+  int height = 180;
+  int weight = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -90,17 +92,26 @@ class _InputPageState extends State<InputPage> {
                         ),
                       ],
                     ),
-                    Slider(
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        thumbColor: kBottomCardColor,
+                        activeTrackColor: kWhiteColor,
+                        inactiveTrackColor: kLabelColor,
+                        overlayColor: kBottomCardColor.withOpacity(0.5),
+                        thumbShape: RoundSliderThumbShape(
+                          enabledThumbRadius: 15.0,
+                        ),
+                      ),
+                      child: Slider(
                         value: height.toDouble(),
-                        onChanged: (double newValue){
+                        onChanged: (double newValue) {
                           setState(() {
-                            height=newValue.toInt();
+                            height = newValue.round();
                           });
                         },
-                        activeColor: kBottomCardColor,
-                        inactiveColor: kLabelColor,
                         min: 100.0,
                         max: 300.0,
+                      ),
                     ),
                   ],
                 ),
@@ -112,6 +123,43 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: ReusableCard(
                       colour: kActiveCardColor,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'WEIGHT',
+                            style: kLabelStyle,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPress: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
@@ -133,4 +181,25 @@ class _InputPageState extends State<InputPage> {
       ),
     );
   }
-}
+} //_InputPageState
+
+class RoundIconButton extends StatelessWidget {
+  final IconData icon;
+  final Function onPress;
+  RoundIconButton({this.icon, this.onPress});
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: onPress,
+      child: Icon(icon),
+      elevation: 6.0,
+      shape: CircleBorder(),
+      fillColor:  kLabelColor,
+      constraints: BoxConstraints.tightFor(
+        width: 50.0,
+        height: 50.0,
+      ),
+    );
+  }
+} //RoundIconButton

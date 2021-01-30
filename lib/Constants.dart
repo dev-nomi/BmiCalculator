@@ -5,6 +5,7 @@ const kInacticeCardColor = Color(0xFF111428);
 const kBottomCardColor = Color(0xFFeb1555);
 const kBottomContainerHeight = 80.0;
 const kLabelColor = Color(0xFF9a9ba4);
+const kWhiteColor=Colors.white;
 enum Gender {
   MALE,
   FEMALE,
