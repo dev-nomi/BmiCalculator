@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ReusableCard.dart';
 import 'ReusableIcon.dart';
 import 'Constants.dart';
+import 'RoundIconButton.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
   int weight = 50;
+  int age=16;
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +143,9 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPress: () {
                                   setState(() {
-                                    weight--;
+                                    if(weight>0){
+                                      weight--;
+                                    }
                                   });
                                 },
                               ),
@@ -165,6 +169,45 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: ReusableCard(
                       colour: kActiveCardColor,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'AGE',
+                            style: kLabelStyle,
+                          ),
+                          Text(
+                            age.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    if(age>0){
+                                      age--;
+                                    }
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPress: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -183,23 +226,4 @@ class _InputPageState extends State<InputPage> {
   }
 } //_InputPageState
 
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  final Function onPress;
-  RoundIconButton({this.icon, this.onPress});
 
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: onPress,
-      child: Icon(icon),
-      elevation: 6.0,
-      shape: CircleBorder(),
-      fillColor:  kLabelColor,
-      constraints: BoxConstraints.tightFor(
-        width: 50.0,
-        height: 50.0,
-      ),
-    );
-  }
-} //RoundIconButton
