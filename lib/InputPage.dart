@@ -35,8 +35,8 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       colour: selectedGender == Gender.MALE
-                          ? activeCardColor
-                          : inacticeCardColor,
+                          ? kActiveCardColor
+                          : kInacticeCardColor,
                       cardChild: ReusableIcon(
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',
@@ -51,8 +51,8 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       colour: selectedGender == Gender.FEMALE
-                          ? activeCardColor
-                          : inacticeCardColor,
+                          ? kActiveCardColor
+                          : kInacticeCardColor,
                       cardChild: ReusableIcon(
                         icon: FontAwesomeIcons.venus,
                         label: 'FEMALE',
@@ -64,7 +64,7 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: ReusableCard(
-                colour: activeCardColor,
+                colour: kActiveCardColor,
               ),
             ),
             Expanded(
@@ -72,12 +72,12 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColor,
+                      colour: kActiveCardColor,
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColor,
+                      colour: kActiveCardColor,
                     ),
                   ),
                 ],
@@ -85,9 +85,9 @@ class _InputPageState extends State<InputPage> {
             ),
             Container(
               width: double.infinity,
-              height: bottomContainerHeight,
+              height: kBottomContainerHeight,
               margin: EdgeInsets.only(top: 10.0),
-              color: bottomCardColor,
+              color: kBottomCardColor,
             ),
           ],
         ),
