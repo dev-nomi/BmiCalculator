@@ -5,6 +5,7 @@ import 'ReusableCard.dart';
 import 'ReusableIcon.dart';
 import 'Constants.dart';
 import 'RoundIconButton.dart';
+import 'ResultPage.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
   int weight = 50;
-  int age=16;
+  int age = 16;
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +144,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPress: () {
                                   setState(() {
-                                    if(weight>0){
+                                    if (weight > 0) {
                                       weight--;
                                     }
                                   });
@@ -187,7 +188,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPress: () {
                                   setState(() {
-                                    if(age>0){
+                                    if (age > 0) {
                                       age--;
                                     }
                                   });
@@ -213,11 +214,31 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: kBottomContainerHeight,
-              margin: EdgeInsets.only(top: 10.0),
-              color: kBottomCardColor,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(),
+                  ),
+                );
+              },
+              child: Container(
+                child: Center(
+                  child: Text(
+                    'CALCULATE',
+                    style: TextStyle(
+                      letterSpacing: 2,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                width: double.infinity,
+                height: kBottomContainerHeight,
+                margin: EdgeInsets.only(top: 10.0),
+                color: kBottomCardColor,
+              ),
             ),
           ],
         ),
@@ -225,5 +246,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 } //_InputPageState
-
-
