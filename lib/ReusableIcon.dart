@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'Constants.dart';
+
 //custom widget
 class ReusableIcon extends StatelessWidget {
   final IconData icon;
-  final String iconName;
+  final String label;
 
-  ReusableIcon({this.iconName, this.icon});
+  ReusableIcon({this.label, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,8 @@ class ReusableIcon extends StatelessWidget {
           height: 15,
         ),
         Text(
-          iconName,
-          style: TextStyle(
-            fontSize: 15.0,
-            color: Color(0xFF9a9ba4),
-          ),
+          label,
+          style: labelStyle,
         ),
       ],
     );

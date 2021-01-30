@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ReusableCard.dart';
 import 'ReusableIcon.dart';
+import 'Constants.dart';
 
-const activeCardColor = Color(0xFF1d1f33);
-const inacticeCardColor = Color(0xFF111428);
-const bottomCardColor = Color(0xFFeb1555);
-const bottomContainerHeight = 80.0;
-enum Gender {
-  MALE,
-  FEMALE,
-}
 
 class InputPage extends StatefulWidget {
   @override
@@ -46,7 +39,7 @@ class _InputPageState extends State<InputPage> {
                           : inacticeCardColor,
                       cardChild: ReusableIcon(
                         icon: FontAwesomeIcons.mars,
-                        iconName: 'MALE',
+                        label: 'MALE',
                       ),
                     ),
                   ),
@@ -62,7 +55,7 @@ class _InputPageState extends State<InputPage> {
                           : inacticeCardColor,
                       cardChild: ReusableIcon(
                         icon: FontAwesomeIcons.venus,
-                        iconName: 'Female',
+                        label: 'FEMALE',
                       ),
                     ),
                   ),
