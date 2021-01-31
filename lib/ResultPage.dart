@@ -1,5 +1,7 @@
+import 'package:bmi_calculator_flutter/Constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'ReusableCard.dart';
+import 'BottomButton.dart';
 
 class ResultPage extends StatelessWidget {
   @override
@@ -7,6 +9,26 @@ class ResultPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Text('Your Result'),
+            ),
+            Expanded(
+              child: ReusableCard(
+                colour: kActiveCardColor,
+              ),
+            ),
+            BottomButton(
+              onPress: (){
+                Navigator.pop(context);
+              },
+              buttonText: 'RE-CALCULATE',
+            ),
+          ],
+        ),
       ),
     );
   }
