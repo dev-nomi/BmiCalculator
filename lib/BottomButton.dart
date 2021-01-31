@@ -12,12 +12,15 @@ class BottomButton extends StatelessWidget {
       onTap: onPress,
       child: Container(
         child: Center(
-          child: Text(
-            buttonText,
-            style: TextStyle(
-              letterSpacing: 2,
-              fontSize: 30.0,
-              fontWeight: FontWeight.w900,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Text(
+              buttonText,
+              style: TextStyle(
+                letterSpacing: 2,
+                fontSize: 20.0,
+                fontWeight: FontWeight.w900,
+              ),
             ),
           ),
         ),
