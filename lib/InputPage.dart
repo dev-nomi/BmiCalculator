@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_flutter/BMIBrain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -217,10 +218,16 @@ class _InputPageState extends State<InputPage> {
             ),
             BottomButton(
               onPress: () {
+                BMIBrain cal=BMIBrain(height: height,weight: weight);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultPage(),
+                    builder: (context) => ResultPage(
+                      bmiResult: cal.getBMI(),
+                      resultText: cal.getStatus(),
+                      statementText: cal.getStatement(),
+                    ),
                   ),
                 );
               },

@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'ReusableCard.dart';
 import 'BottomButton.dart';
+import 'BMIBrain.dart';
 
 class ResultPage extends StatelessWidget {
+  final String bmiResult;
+  final String resultText;
+  final String statementText;
+
+  ResultPage({this.bmiResult, this.resultText, this.statementText});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +31,7 @@ class ResultPage extends StatelessWidget {
                   'Your Result',
                   style: TextStyle(
                     fontSize: 40.0,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -32,7 +39,7 @@ class ResultPage extends StatelessWidget {
             Expanded(
               flex: 5,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: ReusableCard(
                   colour: kActiveCardColor,
                   cardChild: Column(
@@ -41,7 +48,7 @@ class ResultPage extends StatelessWidget {
                     children: <Widget>[
                       Center(
                         child: Text(
-                          'Normal',
+                          resultText,
                           style: TextStyle(
                             color: Color(0xFF22e67b),
                             fontSize: 20.0,
@@ -50,7 +57,7 @@ class ResultPage extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          '22.0',
+                          bmiResult,
                           style: TextStyle(
                             fontSize: 80.0,
                             fontWeight: FontWeight.w900,
@@ -59,7 +66,7 @@ class ResultPage extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          'You have the normal body weight.Good job!',
+                          statementText,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15.0,
